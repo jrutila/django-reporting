@@ -215,6 +215,8 @@ class Report(SimpleReport):
         params = dict(request.GET.items())
         self.grouper = ReportGrouper(request, params, self)
         self.result_headers = self.get_result_headers()
+        if hasattr(self, 'list_display') and len(self.list_display) > 0:
+            self.override_list_display = self.list_display
         self.list_display = self.get_list_display()
 
         super(Report, self).__init__(request)
@@ -264,6 +266,8 @@ class Report(SimpleReport):
         return result
 
     def get_list_display(self):
+        if hasattr(self, 'override_list_display'):
+            return self.override_list_display
         list_display = []
         if self.grouper.has_output():
             list_display += self.grouper.group_value

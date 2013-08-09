@@ -15,6 +15,9 @@ def lookup_key(key, dct, report):
 
     if k:
         attr = None
-        value = dct[k]
+        if isinstance(dct, dict):
+            value = dct[k]
+        else:
+            value = getattr(dct, k)
 
     return k, attr, value

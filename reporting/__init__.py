@@ -1,5 +1,6 @@
 VERSION = (0, 2, 6)
-__version__ = '.'.join(map(str, VERSION))
+__version__ = "dev"
+#'.'.join(map(str, VERSION))
 
 
 import os

@@ -37,7 +37,7 @@ def results(report):
         yield ResultList(None, aggregation_row)
 
 
-@register.inclusion_tag("admin/change_list_results.html")
+@register.inclusion_tag("reporting/change_list_results.html")
 def report_result_list(report):
     headers = list(result_headers(report))
     num_sorted_fields = 0
